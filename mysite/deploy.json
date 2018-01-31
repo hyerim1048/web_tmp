@@ -1,0 +1,9 @@
+{
+  "REPO_URL":"깃헙Repo주소",
+  "PROJECT_NAME":"프로젝트폴더(settings.py가있는 폴더)의 이름",
+  "REMOTE_HOST":"여러분이 만든 도메인주소(ex: djangogirls-seoul-tutorial.tk )",
+  "REMOTE_USER":"django",
+  "STATIC_ROOT":"static",
+  "STATIC_URL":"static",
+  "MEDIA_ROOT":"media"
+}
