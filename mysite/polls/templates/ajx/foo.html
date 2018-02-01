@@ -6,14 +6,13 @@
 $(function() {
   var count = 0;
   $('#mybutton').click(function() {
-      $.get('/polls/mygetview/', {'mydata': 'xyz'}, function(data) {
-        $('#output').html(data); // append to inner html
-        //alert(data);
+      $.get('/polls/mygetview/', {'mydata': '메롱'}, function(data) {
+        $('#output').html(data); //  append
     });
   });
   $('#mybutton2').click(function() {
-      // You gotta include the csrf_token in your post data
-      $.post('/polls/mypostview/', {'mydata': 'xyz', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function(data) {
+      // the csrf_token in your post dat
+      $.post('/polls/mypostview/', {'mydata': '헿', 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function(data) {
         $('#output').html(data); // append to inner html
         //alert(data);
     });
@@ -25,8 +24,8 @@ $(function() {
     // https://api.jquery.com/event.preventdefault/
     $.ajax({
         type: 'POST',
-        url: '/polls/myajaxview',
-        data: {'mydata': 'xyz', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        url: '/polls/myajaxview/',
+        data: {'mydata': '똑똑', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
         success: function (data, textStatus) {
             //alert(data, textStatus);
             $('#output').html(data); // append to inner html
@@ -40,17 +39,17 @@ $(function() {
   $('#myform').submit(function(event) {
     // You gotta include the csrf_token in your post data
     event.preventDefault();
+            console.log($('#myform').serialize());
     $.ajax({
         type: 'POST',
-        url: '/polls/myajaxformview',
+        url: '/polls/myajaxformview/',
         dataType: 'json',
-        console.log($('#myform').serialize());
         data: $('#myform').serialize(), // serialize all your
         success: function (data, textStatus) {
             //alert(JSON.stringify(data), textStatus);
             count += 1;
             $('#output2').html("");
-            $('#output2').html(count + " - You sent a ajax form post. Here's the data from server" + JSON.stringify(data)); // append to inner html
+            $('#output2').html(count + "ajax form post입니다. 서버로부터 데이터가 도착했습니다." + JSON.stringify(data)); // append to inner html
         },
         error: function(xhr, status, e) {
             alert(status, e);
